@@ -33,15 +33,16 @@ d3.json(url).then(function(data) {
     let bbtype = selectedMeta.bbtype;
     let wfreq = selectedMeta.wfreq;
   
-    let panel = d3.select(".panel-body");
-    let list = panel.append("ul");
-    list.append("li").text(`id: ${id}`);
-    list.append("li").text(`ethnicity: ${ethnicity}`);
-    list.append("li").text(`gender: ${gender}`);
-    list.append("li").text(`age: ${age}`);
-    list.append("li").text(`location: ${location}`);
-    list.append("li").text(`bbtype: ${bbtype}`);
-    list.append("li").text(`wfreq: ${wfreq}`);
+    d3.select(".panel-body").text(`id: ${id}\nethnicity: ${ethnicity}\ngender: ${gender}\nage: ${age}\nlocation: ${location}\nbbtype: ${bbtype}\nwfreq: ${wfreq}`)
+
+    // let list = panel.append("ul");
+    // list.append("li").text(`id: ${id}`);
+    // list.append("li").text(`ethnicity: ${ethnicity}`);
+    // list.append("li").text(`gender: ${gender}`);
+    // list.append("li").text(`age: ${age}`);
+    // list.append("li").text(`location: ${location}`);
+    // list.append("li").text(`bbtype: ${bbtype}`);
+    // list.append("li").text(`wfreq: ${wfreq}`);
 
     const trace1 = {
       x: selectedData.otu_ids,
