@@ -25,8 +25,10 @@ d3.json(url).then(function(data) {
     const selectedMeta = demographics.find(demographics => demographics.id == selectedID);
     console.log(selectedMeta);
 
-        // let slicedData = selectedData.slice(0,10);
-    // console.log(sliced);
+    // let metaKeys = Object.keys(selectedMeta);
+    // console.log(metaKeys);
+    // let metaValues = Object.values(selectedMeta);
+    // console.log(metaValues);
 
     let id = selectedMeta.id;
     let ethnicity = selectedMeta.ethnicity;
@@ -35,6 +37,8 @@ d3.json(url).then(function(data) {
     let location = selectedMeta.location;
     let bbtype = selectedMeta.bbtype;
     let wfreq = selectedMeta.wfreq;
+
+    // d3.select(".panel-body").text(`${metaKeys}: ${metaValues}`);
   
     d3.select(".panel-body").text(`id: ${id}\nethnicity: ${ethnicity}\ngender: ${gender}\nage: ${age}\nlocation: ${location}\nbbtype: ${bbtype}\nwfreq: ${wfreq}`);
 
@@ -64,8 +68,8 @@ d3.json(url).then(function(data) {
 
     Plotly.newPlot("bar", dataset, layout);
     
-    let marker_size = selectedData.sample_values;
-    let marker_colour = selectedData.otu_ids;
+    let marker_size = Object.values(selectedData.sample_values);
+    let marker_colour = Object.values(selectedData.otu_ids);
 
     const trace2 = {
         x: Object.values(selectedData.otu_ids),
@@ -74,8 +78,8 @@ d3.json(url).then(function(data) {
         mode: "markers",
         marker: {
             color: marker_colour,
-            // size: marker_size,
-            sizemode: "area"
+            size: marker_size,
+            sizemax: 60
         }
       };
   
