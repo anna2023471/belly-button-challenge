@@ -2,13 +2,13 @@
 const url = "https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json";
 d3.json(url).then(function(data) {
     console.log(data);
-    let samples = data.samples;
+    const samples = data.samples;
     console.log(samples);
-    let demographics = data.metadata;
+    const demographics = data.metadata;
     console.log(demographics);
 
-    var select = document.getElementById("selDataset")
-    var options = samples.map(samples => samples.id);
+    const select = document.getElementById("selDataset")
+    const options = samples.map(samples => samples.id);
 
     for (let i = 0; i < options.length; i++) {
         let opt = options[i];
@@ -25,12 +25,7 @@ d3.json(url).then(function(data) {
     const selectedMeta = demographics.find(demographics => demographics.id == selectedID);
     console.log(selectedMeta);
 
-    // Need to convert selected Data to array first????
-    // let set = new Set([selectedData]);
-    // console.log(set);
-    // let sorted = Array.from(set).sort((a,b) => a.sample_values - b.sample_values);
-    // console.log(sorted);
-    // let sliced = sorted.slice(0,10);
+        // let slicedData = selectedData.slice(0,10);
     // console.log(sliced);
 
     let id = selectedMeta.id;
@@ -51,11 +46,12 @@ d3.json(url).then(function(data) {
     // list.append("li").text(`location: ${location}`);
     // list.append("li").text(`bbtype: ${bbtype}`);
     // list.append("li").text(`wfreq: ${wfreq}`);
+    console.log(selectedData.sample_values);
 
     const trace1 = {
-      x: selectedData.otu_ids,
-      y: selectedData.sample_values,
-      text: selectedData.otu_labels,
+      x: Object.values(selectedData.sample_values).slice(0,10),
+      y: Object.values(selectedData.otu_ids),
+      text: Object.values(selectedData.otu_labels),
       type: "bar",
       orientation: "h"
     };
@@ -72,13 +68,13 @@ d3.json(url).then(function(data) {
     let marker_colour = selectedData.otu_ids;
 
     const trace2 = {
-        x: selectedData.otu_ids,
-        y: selectedData.sample_values,
-        text: selectedData.otu_labels,
+        x: Object.values(selectedData.otu_ids),
+        y: Object.values(selectedData.sample_values).slice(0,10),
+        text: Object.values(selectedData.otu_labels),
         mode: "markers",
         marker: {
             color: marker_colour,
-            size: marker_size,
+            // size: marker_size,
             sizemode: "area"
         }
       };
