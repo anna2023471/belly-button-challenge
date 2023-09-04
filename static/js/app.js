@@ -34,9 +34,7 @@ d3.json(url).then(function(data) {
     let wfreq = selectedMeta.wfreq;
   
     d3.select(".panel-body").html(`id: ${id} <br> ethnicity: ${ethnicity} <br> gender: ${gender} <br> age: ${age} <br> location: ${location} <br> bbtype: ${bbtype} <br> wfreq: ${wfreq}`);
-
-    console.log(selectedData.sample_values);
-    
+ 
 
     const trace1 = {
       x: Object.values(selectedData.sample_values).slice(0,10),
