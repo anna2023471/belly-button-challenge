@@ -26,7 +26,12 @@ d3.json(url).then(function(data) {
     console.log(selectedMeta);
 
     // Need to convert selected Data to array first????
-    // let sortedData = selectedData.sort((a,b) => a.sample_values - b.sample_values);
+    // let set = new Set([selectedData]);
+    // console.log(set);
+    // let sorted = Array.from(set).sort((a,b) => a.sample_values - b.sample_values);
+    // console.log(sorted);
+    // let sliced = sorted.slice(0,10);
+    // console.log(sliced);
 
     let id = selectedMeta.id;
     let ethnicity = selectedMeta.ethnicity;
