@@ -25,6 +25,9 @@ d3.json(url).then(function(data) {
     const selectedMeta = demographics.find(demographics => demographics.id == selectedID);
     console.log(selectedMeta);
 
+    // Need to convert selected Data to array first????
+    // let sortedData = selectedData.sort((a,b) => a.sample_values - b.sample_values);
+
     let id = selectedMeta.id;
     let ethnicity = selectedMeta.ethnicity;
     let gender = selectedMeta.gender;
@@ -33,7 +36,7 @@ d3.json(url).then(function(data) {
     let bbtype = selectedMeta.bbtype;
     let wfreq = selectedMeta.wfreq;
   
-    d3.select(".panel-body").text(`id: ${id}\nethnicity: ${ethnicity}\ngender: ${gender}\nage: ${age}\nlocation: ${location}\nbbtype: ${bbtype}\nwfreq: ${wfreq}`)
+    d3.select(".panel-body").text(`id: ${id}\nethnicity: ${ethnicity}\ngender: ${gender}\nage: ${age}\nlocation: ${location}\nbbtype: ${bbtype}\nwfreq: ${wfreq}`);
 
     // let list = panel.append("ul");
     // list.append("li").text(`id: ${id}`);
