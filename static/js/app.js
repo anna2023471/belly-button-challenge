@@ -33,8 +33,10 @@ d3.json(url).then(function(data) {
     let bbtype = selectedMeta.bbtype;
     let wfreq = selectedMeta.wfreq;
   
-    d3.select(".panel-body").html(`id: ${id} <br> ethnicity: ${ethnicity} <br> gender: ${gender} <br> age: ${age} <br> location: ${location} <br> bbtype: ${bbtype} <br> wfreq: ${wfreq}`);
- 
+    d3.select(".panel-body").html(`id: ${id} \
+    <br> ethnicity: ${ethnicity} \
+    <br> gender: ${gender} \
+    <br> age: ${age} <br> location: ${location} <br> bbtype: ${bbtype} <br> wfreq: ${wfreq}`);   
 
     const trace1 = {
       x: Object.values(selectedData.sample_values).slice(0,10),
@@ -45,7 +47,7 @@ d3.json(url).then(function(data) {
     };
 
     const dataset = [trace1];
-    const layout = {
+    const layout = {yaxis: {type: "category", autorange: "reversed", tickprefix: "OTU", showtickprefix: "all"},
       height: 600,
       width: 800
     };
@@ -56,19 +58,20 @@ d3.json(url).then(function(data) {
     let marker_colour = Object.values(selectedData.otu_ids);
 
     const trace2 = {
-        x: Object.values(selectedData.otu_ids).join().split(','),
-        y: Object.values(selectedData.sample_values).slice(0,10),
+        x: Object.values(selectedData.otu_ids).map(String),
+        y: Object.values(selectedData.sample_values),
         text: Object.values(selectedData.otu_labels),
         mode: "markers",
         marker: {
             color: marker_colour,
             size: marker_size,
-            sizemax: 60
+            sizemax: 40
         }
       };
   
       const dataset1 = [trace2];
       const layout1 = {
+        xaxis: {title: {text: "OTU ID"}},
         height: 600,
         width: 800
       };
