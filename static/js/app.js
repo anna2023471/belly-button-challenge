@@ -7,7 +7,7 @@ d3.json(url).then(function(data) {
     const demographics = data.metadata;
     console.log(demographics);
 
-    // Create and attach dropdown box of participant IDs
+    // Populate dropdown box with participant IDs
     const select = document.getElementById("selDataset")
     const options = samples.map(samples => samples.id);
 
@@ -62,8 +62,8 @@ d3.json(url).then(function(data) {
     Plotly.newPlot("bar", dataset, layout);
     
     // Define marker size and colour variables for bubble chart
-    let marker_size = Object.values(selectedData.sample_values);
-    let marker_colour = Object.values(selectedData.otu_ids);
+    let markerSize = Object.values(selectedData.sample_values);
+    let markerColour = Object.values(selectedData.otu_ids);
 
     // Create and display bubble chart
     const trace2 = {
@@ -72,15 +72,15 @@ d3.json(url).then(function(data) {
         text: Object.values(selectedData.otu_labels),
         mode: "markers",
         marker: {
-            color: marker_colour,
+            color: markerColour,
             colorscale: "Earth",
-            size: marker_size,
+            size: markerSize,
             sizemax: 40
         }
       };
   
-      const dataset1 = [trace2];
-      const layout1 = {
+    const dataset1 = [trace2];
+    const layout1 = {
         xaxis: {title: {text: "OTU ID"}},
         height: 600,
         width: 800
@@ -89,21 +89,20 @@ d3.json(url).then(function(data) {
     Plotly.newPlot("bubble", dataset1, layout1);
   
   }
-
  
     // Initialize the chart with the default ID (940)
   updateChart(940);
   
-
   // Add event listener to the dropdown for chart and metadata panel updates
   d3.selectAll("#selDataset").on("change", function () {
     const selectedID = d3.select(this).property("value");
     updateChart(selectedID);
 
-    d3.selectAll(".panel-body").on("change", function() {
-        const selectedMeta = d3.select(this).property("value");
-        updateMeta(selectedMeta);
-      });
+  d3.selectAll(".panel-body").on("change", function() {
+      const selectedMeta = d3.select(this).property("value");
+      updateMeta(selectedMeta);
+    
+    });
 
   })});
   
