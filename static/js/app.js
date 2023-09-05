@@ -87,8 +87,10 @@ d3.json(url).then(function(data) {
       };
     
     Plotly.newPlot("bubble", dataset1, layout1);
-  }
   
+  }
+
+ 
     // Initialize the chart with the default ID (940)
   updateChart(940);
   
