@@ -54,7 +54,7 @@ d3.json(url).then(function(data) {
     };
 
     const dataset = [trace1];
-    const layout = {yaxis: {type: "category", autorange: "reversed", tickprefix: "OTU", showtickprefix: "all"},
+    const layout = {yaxis: {type: "category", autorange: "reversed", tickprefix: "OTU ", showtickprefix: "all"},
       height: 600,
       width: 800
     };
